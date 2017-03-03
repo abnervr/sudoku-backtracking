@@ -2,7 +2,7 @@
   "name": "backtracking",
   "version": "1.0.0",
   "description": "Using backtracking to solve sudoku problems",
-  "main": "backtracking.js",
+  "main": "sudoku.js",
   "dependencies": {
     "mocha": "^3.2.0"
   },

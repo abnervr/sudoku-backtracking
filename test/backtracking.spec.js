@@ -1,7 +1,7 @@
 const assert = require('assert');
-const backtracking = require('../backtracking');
+const sudoku = require('../sudoku');
 
-describe('backtracking', function() {
+describe('Sudoku', function() {
   describe('backtracing', function() {
     it('should solve the sudoku problem', function() {
       const board = [
@@ -26,7 +26,7 @@ describe('backtracking', function() {
         "619275843".split(""),
         "854396127".split(""),
       ];
-      const response = backtracking.backtracking(board);
+      const response = sudoku.backtracking(board);
 
       assert.deepEqual(response, expectedResponse);
     });
