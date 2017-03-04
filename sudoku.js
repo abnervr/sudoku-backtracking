@@ -65,12 +65,19 @@ function generate(board, lineIndex, colIndex) {
 const candidates = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 function findCandidates(board, lineIndex, colIndex) {
-  const currentNumbers = board[lineIndex].filter((el, index) => index !== colIndex && el !== "0")
-    .concat(board.filter((line, index) => lineIndex !== index)
+  const blockIndex = findBlockIndex(lineIndex, colIndex);
+  const currentNumbers = board[lineIndex]
+    .filter((el, index) => index !== colIndex && el !== "0")
+    .concat(
+      board
+      .filter((line, index) => lineIndex !== index)
       .map((line) => line[colIndex])
       .filter(number => number !== "0")
+    ).concat(
+      blocks(board)[blockIndex]
+      .filter((el, index) => index !== lineIndex % 3 + (colIndex % 3) * 3)
     );
-  return candidates;//.filter((number) => currentNumbers.includes(number));
+  return candidates.filter((number) => !currentNumbers.includes(number));
 }
 
 function printBoard(board) {
@@ -124,12 +131,16 @@ function blocks(board) {
   const blocksBoard = [];
   board.forEach((line, lineIndex) => {
       line.forEach((number, colIndex) => {
-        const index = Math.floor((lineIndex) / 3) * 3 + (Math.floor((colIndex) / 3));
+        const index = findBlockIndex(lineIndex, colIndex);
         blocksBoard[index] = blocksBoard[index] || [];
         blocksBoard[index].push(number);
       });
   });
   return blocksBoard;
+}
+
+function findBlockIndex(lineIndex, colIndex) {
+  return Math.floor((lineIndex) / 3) * 3 + (Math.floor((colIndex) / 3));
 }
 
 module.exports = {

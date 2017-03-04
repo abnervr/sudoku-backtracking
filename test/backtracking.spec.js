@@ -63,11 +63,29 @@ describe('Sudoku', function() {
         '009205800'.split(''),
         '804000107'.split(''),
       ];
-      const lineIndex = 0;
+      const lineIndex = 1;
       const colIndex = 1;
       const response = sudoku.findCandidates(board, lineIndex, colIndex);
 
-      assert.deepEqual(response, '46'.split(''));
+      assert.deepEqual(response, '578'.split(''));
+    });
+    it('Should find valid candidates for the position', function() {
+      const board = [
+        '103000509'.split(''),
+        '052109400'.split(''),
+        '000704000'.split(''),
+        '300502006'.split(''),
+        '060000050'.split(''),
+        '700803004'.split(''),
+        '000401000'.split(''),
+        '009205200'.split(''),
+        '804000107'.split(''),
+      ];
+      const lineIndex = 8;
+      const colIndex = 8;
+      const response = sudoku.findCandidates(board, lineIndex, colIndex);
+
+      assert.deepEqual(response, '357'.split(''));
     });
   });
 
