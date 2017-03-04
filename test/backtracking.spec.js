@@ -49,4 +49,55 @@ describe('Sudoku', function() {
       assert(response);
     });
   });
+
+  describe('findCandidates', function() {
+    it('Should find valid candidates for the position', function() {
+      const board = [
+        '103000509'.split(''),
+        '002109400'.split(''),
+        '000704000'.split(''),
+        '300502006'.split(''),
+        '060000050'.split(''),
+        '700803004'.split(''),
+        '000401000'.split(''),
+        '009205800'.split(''),
+        '804000107'.split(''),
+      ];
+      const lineIndex = 0;
+      const colIndex = 1;
+      const response = sudoku.findCandidates(board, lineIndex, colIndex);
+
+      assert.deepEqual(response, '46'.split(''));
+    });
+  });
+
+  describe('blocks', function() {
+    it('Should convert 3x3 blocks into lines', function() {
+      const board = [
+        '103000509'.split(''),
+        '002109400'.split(''),
+        '000704000'.split(''),
+        '300502006'.split(''),
+        '060000050'.split(''),
+        '700803004'.split(''),
+        '000401000'.split(''),
+        '009205800'.split(''),
+        '804000107'.split(''),
+      ];
+      const expectedResponse = [
+        '103002000'.split(''),
+        '000109704'.split(''),
+        '509400000'.split(''),
+        '300060700'.split(''),
+        '502000803'.split(''),
+        '006050004'.split(''),
+        '000009804'.split(''),
+        '401205000'.split(''),
+        '000800107'.split(''),
+      ];
+      const response = sudoku.blocks(board);
+
+      assert.deepEqual(response, expectedResponse);
+    });
+  });
 });
