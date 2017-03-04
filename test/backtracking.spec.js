@@ -5,30 +5,48 @@ describe('Sudoku', function() {
   describe('backtracing', function() {
     it('should solve the sudoku problem', function() {
       const board = [
-        "103000509".split(""),
-        "002109400".split(""),
-        "000704000".split(""),
-        "300502006".split(""),
-        "060000050".split(""),
-        "700803004".split(""),
-        "000401000".split(""),
-        "009205800".split(""),
-        "804000107".split(""),
+        '103000509'.split(''),
+        '002109400'.split(''),
+        '000704000'.split(''),
+        '300502006'.split(''),
+        '060000050'.split(''),
+        '700803004'.split(''),
+        '000401000'.split(''),
+        '009205800'.split(''),
+        '804000107'.split(''),
       ];
       const expectedResponse = [
-        "143628579".split(""),
-        "572139468".split(""),
-        "986754231".split(""),
-        "391542786".split(""),
-        "468917352".split(""),
-        "725863914".split(""),
-        "237481695".split(""),
-        "619275843".split(""),
-        "854396127".split(""),
+        '143628579'.split(''),
+        '572139468'.split(''),
+        '986754231'.split(''),
+        '391542786'.split(''),
+        '468917352'.split(''),
+        '725863914'.split(''),
+        '237481695'.split(''),
+        '619275843'.split(''),
+        '854396127'.split(''),
       ];
       const response = sudoku.backtracking(board);
 
       assert.deepEqual(response, expectedResponse);
+    });
+  });
+
+  describe('isDuplicated', function() {
+    it('Should tell if the number is not duplicated in the array', function() {
+      const line = '103000509'.split('');
+      const number = '1';
+      const index = 0;
+      const response = sudoku.isDuplicated(number, index, line);
+
+      assert(!response);
+    });
+    it('Should tell if the number is duplicated in the array', function() {
+      const line = '113000509'.split('');
+      const number = '1';
+      const index = 0;
+      const response = sudoku.isDuplicated(number, index, line);
+      assert(response);
     });
   });
 });

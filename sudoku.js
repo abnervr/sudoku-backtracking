@@ -134,6 +134,7 @@ function blocks(board) {
 
 module.exports = {
   backtracking,
+  isDuplicated,
   rotate,
   blocks,
 };
