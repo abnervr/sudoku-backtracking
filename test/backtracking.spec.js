@@ -2,7 +2,7 @@ const assert = require('assert');
 const sudoku = require('../sudoku');
 
 describe('Sudoku', function() {
-  describe('backtracing', function() {
+  describe('backtracking', function() {
     it('should solve the sudoku problem', function() {
       const board = [
         '103000509'.split(''),
